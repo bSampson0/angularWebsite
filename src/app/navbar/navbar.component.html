@@ -1,25 +1,28 @@
 
 
-<nav class="navbar navbar-expand navbar-inverse">
+<header class="navbar nav navbar-expand-md navbar-dark">
   <div class="container">
-    <a routerLink="/" class="navbar-brand">MarCo Media</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" [routerLink]="['/']" (click)="navbarCollapsed = true">MarCo Media</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
+            [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <div class="collapse navbar-collapse" [ngbCollapse]="navbarCollapsed" id="navbarContent">
       <ul class="navbar-nav mr-auto">
       </ul>
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="about">About</a>
+        <li *ngIf="authenticated" class="nav-item">
+          <a class="nav-link" routerLink="about" (click)="navbarCollapsed = true">About</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="work">Work Examples</a>
+        <li *ngIf="authenticated" class="nav-item">
+          <a class="nav-link" routerLink="work" (click)="navbarCollapsed = true">Work Examples</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="contact">Contact</a>
+        <li *ngIf="authenticated" class="nav-item">
+          <a class="nav-link" routerLink="contact" (click)="navbarCollapsed = true">Contact</a>
         </li>
+        <li *ngIf="!authenticated" class="nav-item login-area"> <a class="nav-link" (click)="login()">Login</a> </li>
+        <li *ngIf="authenticated" class="nav-item login-area"> <a class="nav-link" (click)="logout()">Log out</a> </li>
       </ul>
     </div>
       </div>
-  </nav>
+  </header>

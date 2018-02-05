@@ -1,5 +1,7 @@
-
-.navbar-inverse a {
+.navbar-brand {
+  color: inherit;
+}
+.navbar-dark a {
   color: #A3BBAD !important;
   transition: all .4s ease;
   border-radius: 10px;
@@ -10,4 +12,8 @@
 .navbar-nav a:hover {
   color: #fff !important;
   background-color: #357266;
+}
+
+.login-area a{
+  cursor: pointer;
 }
